@@ -1,3 +1,3 @@
-# Blog Creation Project Using React
+# React_study
 
 
