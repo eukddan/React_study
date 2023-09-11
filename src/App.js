@@ -11,11 +11,7 @@ import "./App.css";
 
 function App() {
   let post = "전주 비빕밥 맛집"; // 변수 생성할 때 let, var, const 중 하나 사용하면 됨
-  let [글제목, b] = useState([
-    "남자 아우터 추천",
-    "남자 코트 추천",
-    "남자 하의 추천",
-  ]);
+  let [글제목, 제목변경] = useState(["아우터 추천", "코트 추천", "반팔 추천"]);
   const [따봉, 따봉변경] = useState(0);
   return (
     //return() 안에 html 짜야 함.
@@ -27,16 +23,37 @@ function App() {
       <div className="black-nav">
         <h4 style={{ color: "orange", fontSize: "16px" }}>BLOG</h4>
       </div>
+      <button
+        onClick={() => {
+          let copy1 = [...글제목];
+          copy1.sort();
+          제목변경(copy1);
+        }}
+        /*리액트에서 array/object state를 수정하고 싶으면 
+        독립적인 카피본을 만들어서 수정하는 것이 좋음*/
+        //let copy = ~~;
+      >
+        정렬
+      </button>
       <div className="list">
         <h4>
-          {글제목[0]}{" "}
+          {글제목[0]}
+          <button
+            onClick={() => {
+              let copy = [...글제목]; // 카피본
+              copy[0] = "여자 아우터 추천";
+              제목변경(copy);
+            }}
+          >
+            변경
+          </button>
           <span
             onClick={() => {
               따봉변경(따봉 + 1);
             }}
           >
             👍
-          </span>{" "}
+          </span>
           {따봉}
         </h4>
         <p>가죽 자켓</p>
