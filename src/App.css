@@ -2,11 +2,21 @@
   text-align: center;
 }
 
+div {
+  box-sizing: border-box;
+}
+
 .black-nav {
   display: flex;
   background-color: black;
   width: 100%;
   color: white;
+  padding-left: 20px;
+}
+
+.list {
+  border-bottom: 1px solid grey;
+  text-align: left;
   padding-left: 20px;
 }
 
