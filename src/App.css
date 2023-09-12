@@ -6,6 +6,13 @@ div {
   box-sizing: border-box;
 }
 
+.modal {
+  margin-top: 20px;
+  padding: 20px;
+  background: #eee;
+  text-align: left;
+}
+
 .black-nav {
   display: flex;
   background-color: black;
