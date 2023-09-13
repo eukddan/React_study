@@ -12,9 +12,8 @@ import "./App.css";
 function App() {
   let post = "전주 비빕밥 맛집"; // 변수 생성할 때 let, var, const 중 하나 사용하면 됨
   let [글제목, 제목변경] = useState(["아우터 추천", "코트 추천", "반팔 추천"]);
-  const [따봉, 따봉변경] = useState(0);
+  const [따봉, 따봉변경] = useState([0, 0, 0]);
   const [modal, setModal] = useState(false);
-  [1, 2, 3].map(function () {});
   return (
     //return() 안에 html 짜야 함.
     //return() 안에는 병럴로 태그 2개 이상 기입 금지
@@ -37,6 +36,31 @@ function App() {
       >
         정렬
       </button>
+      {글제목.map(function (a, i) {
+        return (
+          <div className="list">
+            <h4
+              onClick={() => {
+                setModal(!modal);
+              }}
+            >
+              {글제목[i]}
+              <span
+                onClick={() => {
+                  const copy = [...따봉];
+                  copy[i] += 1;
+                  따봉변경(copy);
+                }}
+              >
+                👍
+              </span>
+              {따봉[i]}
+            </h4>
+            <p>9월 13일 발행</p>
+          </div>
+        );
+      })}
+      {modal == true ? <Modal /> : null}
       {/* <div className="list">
         <h4>
           {글제목[0]}
@@ -75,29 +99,6 @@ function App() {
         <p>치노팬츠</p>
       </div>
       {modal == true ? <Modal /> : null} */}
-      {글제목.map(function (a, i) {
-        return (
-          <div className="list">
-            <h4
-              onClick={() => {
-                setModal(!modal);
-              }}
-            >
-              {글제목[i]}{" "}
-              <span
-                onClick={() => {
-                  따봉변경(따봉 + 1);
-                }}
-              >
-                👍
-              </span>
-              {따봉}
-            </h4>
-            <p>9월 13일 발행</p>
-          </div>
-        );
-      })}
-      {modal == true ? <Modal /> : null}
     </div>
   );
 }
