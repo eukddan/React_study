@@ -8,6 +8,7 @@ function App() {
   const [따봉, 따봉변경] = useState([0, 0, 0]);
   const [modal, setModal] = useState(false);
   const [title, setTitle] = useState(0);
+  const [input, setInput] = useState("");
   return (
     <div className="App">
       <div className="black-nav">
@@ -33,7 +34,8 @@ function App() {
             >
               {글제목[i]}
               <span
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   const copy = [...따봉];
                   copy[i] += 1;
                   따봉변경(copy);
@@ -47,6 +49,11 @@ function App() {
           </div>
         );
       })}
+      <input
+        onChange={(e) => {
+          setInput(e.target.value); // 비동기처리
+        }}
+      ></input>
       {modal == true ? (
         <Modal
           color="skyblue"
