@@ -14,6 +14,7 @@ function App() {
   let [글제목, 제목변경] = useState(["아우터 추천", "코트 추천", "반팔 추천"]);
   const [따봉, 따봉변경] = useState(0);
   const [modal, setModal] = useState(false);
+  [1, 2, 3].map(function () {});
   return (
     //return() 안에 html 짜야 함.
     //return() 안에는 병럴로 태그 2개 이상 기입 금지
@@ -36,7 +37,7 @@ function App() {
       >
         정렬
       </button>
-      <div className="list">
+      {/* <div className="list">
         <h4>
           {글제목[0]}
           <button
@@ -73,6 +74,29 @@ function App() {
         </h4>
         <p>치노팬츠</p>
       </div>
+      {modal == true ? <Modal /> : null} */}
+      {글제목.map(function (a, i) {
+        return (
+          <div className="list">
+            <h4
+              onClick={() => {
+                setModal(!modal);
+              }}
+            >
+              {글제목[i]}{" "}
+              <span
+                onClick={() => {
+                  따봉변경(따봉 + 1);
+                }}
+              >
+                👍
+              </span>
+              {따봉}
+            </h4>
+            <p>9월 13일 발행</p>
+          </div>
+        );
+      })}
       {modal == true ? <Modal /> : null}
     </div>
   );
