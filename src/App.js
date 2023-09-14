@@ -44,6 +44,17 @@ function App() {
                 👍
               </span>
               {따봉[i]}
+              &nbsp;&nbsp;&nbsp;
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const copy = [...글제목];
+                  copy.splice(i, 1);
+                  제목변경(copy);
+                }}
+              >
+                삭제
+              </button>
             </h4>
             <p>9월 13일 발행</p>
           </div>
@@ -54,6 +65,13 @@ function App() {
           setInput(e.target.value); // 비동기처리
         }}
       ></input>
+      <button
+        onClick={() => {
+          제목변경([input, ...글제목]);
+        }}
+      >
+        등록
+      </button>
       {modal == true ? (
         <Modal
           color="skyblue"
